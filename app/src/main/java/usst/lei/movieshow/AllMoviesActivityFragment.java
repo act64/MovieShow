@@ -22,8 +22,7 @@ public class AllMoviesActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.fragment_all_movies, container, false);
-        ImageView iv= (ImageView) v.findViewById(R.id.testImage);
-        Picasso.with(getActivity()).load(R.mipmap.ic_launcher).into(iv);
+
         return v;
     }
 }
