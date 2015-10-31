@@ -19,11 +19,11 @@ public class Constants {
      * @param year 查询的年限
      * @return 查询的url链接
      */
-    public static URL getSearchUrl(int year) throws MalformedURLException {
+    public static String getSearchUrl(int year) throws MalformedURLException {
         // BuildConfig.APIKEY 是在api.themoviedb.org申请的key，请自行申请
         String s=String.format(SearchFormat,year, BuildConfig.APIKEY);
         Log.e("Task",s);
-        return new URL(s);
+        return s;
     }
 
     /**
