@@ -30,6 +30,11 @@
                 android:value=".AllMoviesActivity"
                 ></meta-data>
         </activity>
+        <provider
+            android:authorities="usst.lei.movieshow.data.provider"
+            android:name=".data.FavourProvider"
+            android:exported="true"
+            />
     </application>
 
 </manifest>

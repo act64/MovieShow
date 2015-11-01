@@ -24,9 +24,19 @@ public class Utils {
         private double rate;
         private int votes;
         private String postImagurl;
-        public MovieObject(String title,String intro,String date,double ratevalue,int votenum ,String poster)
+        private int year;
+
+        public void setYear(int year) {
+            this.year = year;
+        }
+
+        public int getYear() {
+            return year;
+        }
+
+        public MovieObject(String title,String intro,String date,double ratevalue,int votenum ,String poster,int moveyear)
         {
-            name=title;introduce=intro;releaseDate=date;rate=ratevalue;votes=votenum;postImagurl=poster;
+            name=title;introduce=intro;releaseDate=date;rate=ratevalue;votes=votenum;postImagurl=poster;year=moveyear;
         }
 
         public String getPostImagurl() {
@@ -79,7 +89,7 @@ public class Utils {
             JSONObject info=infos.getJSONObject(i);
 
             MovieObject obj=new MovieObject(info.getString("title"),info.getString("overview"),info.getString("release_date"),
-                    info.getDouble("vote_average"),info.getInt("vote_count"),info.getString("poster_path"));
+                    info.getDouble("vote_average"),info.getInt("vote_count"),info.getString("poster_path"),Integer.parseInt( info.getString("release_date").substring(0,4)));
             if (obj.rate>7 &&obj.votes>1000)
             {
                 objects.add(obj);

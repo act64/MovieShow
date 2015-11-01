@@ -20,6 +20,8 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 import com.android.volley.Cache;
 import com.android.volley.Request;
@@ -133,6 +135,7 @@ public class AllMoviesActivityFragment extends Fragment {
                     holder.imageView.setImageBitmap(response);
                 }
             }, size.x/2, size.y/2, ImageView.ScaleType.FIT_XY,null,null);
+            //Log.e("task",request.getCacheKey());
             Cache.Entry entry=mainQueue.getCache().get(request.getCacheKey());
             if (entry==null) {
                 holder.imageView.setImageResource(R.mipmap.ic_launcher);
@@ -167,11 +170,13 @@ public class AllMoviesActivityFragment extends Fragment {
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent detailIntent=new Intent(getActivity(),DetailActivity.class);
+                Intent detailIntent = new Intent(getActivity(), DetailActivity.class);
                 detailIntent.putExtra(POSITION, position);
                 startActivity(detailIntent);
             }
         });
+
+
       WindowManager manager= (WindowManager)getActivity().getSystemService(Context.WINDOW_SERVICE);
         Display display= manager.getDefaultDisplay();
         size=new Point();
@@ -182,7 +187,7 @@ public class AllMoviesActivityFragment extends Fragment {
     mainQueue=Volley.newRequestQueue(getActivity().getApplicationContext());
         try {
             //利用Volley将网页api的string缓存至本地
-            mainQueue.add(new StringRequest(Constants.getSearchUrl(2013), new Response.Listener<String>() {
+            mainQueue.add(new StringRequest(Constants.getSearchUrl(getActivity().getSharedPreferences("default",Context.MODE_PRIVATE).getInt("year",2014)), new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     try {

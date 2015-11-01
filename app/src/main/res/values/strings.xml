@@ -5,4 +5,9 @@
     <string name="title_activity_detail">DetailActivity</string>
     <string name="like">喜欢</string>
     <string name="dislike">标记为喜欢</string>
+    <string name="choseyear">选择年份</string>
+    <string name="cancle">取消</string>
+    <string name="certain">确定</string>
+    <string name="drawopen">Open drawer</string>
+    <string name="drawcolse">Close drawer</string>
 </resources>
